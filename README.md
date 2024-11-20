@@ -102,11 +102,11 @@ N/A
 > Parameters : **name, description, type, date**
 > Response: Success or error message
 
-**PUT /achievemnts{id}**
+- **PUT /achievemnts{id}**
 > Parameters: **name, description, type, date**
 > Response: Success or error message
 
-**DELETE /achievemnts{id}**
+- **DELETE /achievemnts{id}**
 > Response: Success or error message
 
 ## Roadmap
@@ -118,6 +118,9 @@ N/A
 ## Future Implementations
 
 **Shareable Link** : Allow the user to share a whole summary
+
 **Advanced Search and filters** : Allow the user to refine the details as needed.
+
 **Public profiles** : User can showcase their potential publicly
+
 **Gamification** : Add badges and milestones in their growth 
