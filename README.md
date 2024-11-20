@@ -30,19 +30,19 @@ Conventional resumes just highlight a person's employment history and don't high
 ### Tech Stack
 
 **FrontEnd**
-        - React  
-        - Material UI/Boostrap
-        - Charts.js (Visualization) 
+- React  
+- Material UI/Boostrap
+- Charts.js (Visualization) 
 
 **BackEnd**  
-        - Node.js
-        - Express.js
+- Node.js
+- Express.js
 
 **DataBase**
-        - MySQL
+- MySQL
 
 **Authentication**
-        - Passport.js
+- Passport.js
 
 ### APIs
 
