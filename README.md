@@ -114,33 +114,45 @@ N/A
 - **Day 1**
 
 > Set up the database schema 
+
 > Implement basic server structure for handling requests
+
 > Connect backend to the database
 
 - **Day 2-3**
 
 > Design the dashboard layout
+
 > Implement front-end components for displaying data
+
 > Set up API calls between the front end and the backend to pull data
+
 > Begin integrating data such as achievements, progress, and skills into the dashboard
 
 - **Day 4-5**
 
 > Design achievement and skill tracking models in the database
+
 > Implement backend functionality to add, update, and view achievements and skills
+
 > Build front-end components to display tracked achievements and skills
+
 > Integrate achievement and skill tracking into the user dashboard
 
 - **Day 6-7**
 
 > Design and develop the skill tracker page layout 
+
 > Implement the functionality to allow users to update and track their skills
+
 > Ensure proper data flow between the backend and frontend for the skill tracker page
 
 - **Day 8-9**
 
 > Finalize the user profile UI
+
 > Perform testing of all features (functionality, usability, responsiveness)
+
 > Debug and fix any issues identified during testing
 
 ## Future Implementations
