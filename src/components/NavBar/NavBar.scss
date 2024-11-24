@@ -32,10 +32,30 @@
 
     &__login{
       width: 7.5rem;
+      height: 2.25rem;
+      border: none;
+      background-color: $background-color-1;
+      border-radius: 20px;
+      color: $primary-color-3;
+      cursor: pointer;
+
+      &:hover{
+        background-color: $primary-color-1;
+      }
     }
 
     &__signup{
       width: 7.5rem;
+      height: 2.25rem;
+      border: none;
+      background-color: $primary-color-2;
+      border-radius: 20px;
+      color: $primary-color-3;
+      cursor: pointer;
+
+      &:hover{
+        background-color: $primary-color-1;
+      }
     }
   }
   

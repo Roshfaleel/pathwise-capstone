@@ -3,6 +3,7 @@ import "./HomePage.scss";
 
 import NavBar from "../../components/NavBar/Navbar";
 import FeaturesSection from "../../components/FeaturesSection/FeaturesSection";
+import Footer from "../../components/Footer/Footer";
 
 function HomePage() {
   return (
@@ -32,6 +33,7 @@ function HomePage() {
         </p>
       </section>
       <FeaturesSection/>
+      <Footer/>
     </>
   );
 }
