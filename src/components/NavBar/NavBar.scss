@@ -1,18 +1,18 @@
 @use "../../styles/partials/variables.scss" as *;
 
 .navbar {
-    background-color: $primary-color-1;
-    height: 8vh;
+    background-color: $secondary-color-2;
+    height: 6vh;
   
     &__logo {
       margin-left: 2.25rem;
       display: flex;
-      align-items: center; // Ensures alignment
+      align-items: center; 
     }
   
     &__buttons {
       margin-right: 2.25rem;
-      display: flex; // Required for flex properties
+      display: flex; 
       justify-content: flex-end;
     }
   
@@ -22,7 +22,8 @@
     }
   
     &__name {
-      color: $primary-color-3;
+      color: $primary-color-1;
+      font-size: 1.2rem;
     }
   }
   
