@@ -1,6 +1,6 @@
 import React from "react";
 import "./HomePage.scss";
-
+import { Link } from "react-router-dom";
 import NavBar from "../../components/NavBar/Navbar";
 import FeaturesSection from "../../components/FeaturesSection/FeaturesSection";
 import Footer from "../../components/Footer/Footer";
@@ -33,6 +33,11 @@ function HomePage() {
         </p>
       </section>
       <FeaturesSection/>
+      <div className="banner">
+        <Link to="/login" className="banner__link">
+        <button className="banner__button">Lets Get Started</button>
+        </Link>
+      </div>
       <Footer/>
     </>
   );
