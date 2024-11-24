@@ -1,6 +1,8 @@
 import React from "react";
 import "./HomePage.scss";
 import NavBar from "../../components/NavBar/Navbar";
+import logo from "../../assets/images/PW_Logo.png";
+
 
 function HomePage() {
   return (
@@ -35,8 +37,8 @@ function HomePage() {
         <p>Monitor your journey with intuitive charts and insights.</p>
         <h2>Collaborative Growth</h2>
         <p>Connect with mentors and peers to share and inspire progress.</p>
-
       </div>
+      
     </>
   );
 }

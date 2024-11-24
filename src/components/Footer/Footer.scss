@@ -1,0 +1,21 @@
+@use "../../styles/partials/variables.scss" as *;
+
+.footer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px;
+    
+   background-color: $secondary-color-2;
+    &__img{
+      align-self: center;
+      height: 50px;
+      width: 50px;
+    }
+  
+    &__detail{
+      align-self: center;
+      margin: 0;
+      font-size: .75rem;
+    }
+  }
