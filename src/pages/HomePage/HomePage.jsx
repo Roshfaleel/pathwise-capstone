@@ -1,11 +1,13 @@
-import React from 'react'
+import React from "react";
+import "./HomePage.scss";
+import NavBar from "../../components/NavBar/Navbar";
 
 function HomePage() {
   return (
-    <div>
-      Homepage
-    </div>
-  )
+    <>
+      <NavBar/>
+    </>
+  );
 }
 
-export default HomePage
+export default HomePage;

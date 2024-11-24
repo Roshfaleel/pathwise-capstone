@@ -1,0 +1,28 @@
+@use "../../styles/partials/variables.scss" as *;
+
+.navbar {
+    background-color: $primary-color-1;
+    height: 8vh;
+  
+    &__logo {
+      margin-left: 2.25rem;
+      display: flex;
+      align-items: center; // Ensures alignment
+    }
+  
+    &__buttons {
+      margin-right: 2.25rem;
+      display: flex; // Required for flex properties
+      justify-content: flex-end;
+    }
+  
+    &__img {
+      width: 1.875rem;
+      height: 1.875rem;
+    }
+  
+    &__name {
+      color: $primary-color-3;
+    }
+  }
+  
