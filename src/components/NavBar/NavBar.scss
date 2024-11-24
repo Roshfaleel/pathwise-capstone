@@ -1,8 +1,11 @@
 @use "../../styles/partials/variables.scss" as *;
 
 .navbar {
+  display: flex;
+  justify-content: space-between;
     background-color: $secondary-color-2;
     height: 6vh;
+    padding: 10px;
   
     &__logo {
       margin-left: 2.25rem;
@@ -14,6 +17,7 @@
       margin-right: 2.25rem;
       display: flex; 
       justify-content: flex-end;
+      gap: 20px;
     }
   
     &__img {
@@ -24,6 +28,14 @@
     &__name {
       color: $primary-color-1;
       font-size: 1.2rem;
+    }
+
+    &__login{
+      width: 7.5rem;
+    }
+
+    &__signup{
+      width: 7.5rem;
     }
   }
   

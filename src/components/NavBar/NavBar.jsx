@@ -10,8 +10,8 @@ function NavBar() {
         <span className="navbar__name">PathWise</span>
         </div>
         <div className="navbar__buttons">
-        <button>Login</button>
-        <button>Sign Up</button>
+        <button className='navbar__login'>Login</button>
+        <button className='navbar__signup'>Sign Up</button>
         </div>
       </div>
   )
