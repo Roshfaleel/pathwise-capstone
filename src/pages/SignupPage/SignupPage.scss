@@ -1,0 +1,22 @@
+@use "../../styles/partials/variables.scss" as *;
+
+.signup {
+  &__link{
+    padding: 20px 0;
+    font-size: 14px;
+
+    a {
+        color: $primary-color-2; 
+        text-decoration: none; 
+    
+        &:hover {
+          color: $primary-color-1; 
+          text-decoration: underline; 
+        }
+    
+        &:active {
+          color: #1abc9c;
+        }
+      }
+  }
+}
