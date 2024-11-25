@@ -27,6 +27,7 @@
     }
   
     &__card {
+        position: relative;
       background: white;
       padding: 3rem 3rem 2rem 3rem;
       border-radius: 10px;
@@ -35,6 +36,27 @@
       max-width: 500px;
       font-family: "Raleway";
     }
+
+    &__back-button {
+        position: absolute;
+        top: 1rem;
+        left: 1rem;
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        color: #333;
+        cursor: pointer;
+        font-weight: bold;
+        padding: 0.5rem;
+    
+        &:hover {
+          color: #007bff;
+        }
+    
+        &:focus {
+          outline: none;
+        }
+      }
   
     &__header {
       font-size: 3rem;
