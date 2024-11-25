@@ -4,7 +4,7 @@ import SideBar from '../../components/SideBar/SideBar'
 function AchievementsPage() {
   return (
     <div>
-      <SideBar/>
+    Achievements
     </div>
   )
 }

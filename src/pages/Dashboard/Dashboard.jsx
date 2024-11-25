@@ -7,7 +7,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 function Dashboard() {
   return (
     <div className="d-flex">
-      <SideBar />
       <div className="content">
         <Container>
           <Card className="main-card">
