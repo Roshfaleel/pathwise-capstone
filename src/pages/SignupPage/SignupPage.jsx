@@ -4,6 +4,8 @@ import { Link, useNavigate } from "react-router-dom";
 import FormComponent from "../../components/FormComponent/FormComponent";
 import AuthCardLayout from "../../components/AuthCardLayout/AuthCardLayout";
 import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const SignUpPage = () => {
   const navigate = useNavigate();
@@ -13,7 +15,7 @@ const SignUpPage = () => {
     password: "",
     confirmPassword: "",
   });
-  const [error, setError] = useState(null)
+  const [error, setError] = useState(null);
 
   const signUpFields = [
     {
@@ -30,7 +32,7 @@ const SignUpPage = () => {
       name: "email",
       type: "email",
       placeholder: "Your email address",
-      value : formData.email,
+      value: formData.email,
     },
     {
       label: "Password",
@@ -38,7 +40,7 @@ const SignUpPage = () => {
       name: "password",
       type: "password",
       placeholder: "Password",
-      value : formData.password,
+      value: formData.password,
     },
     {
       label: "Confirm Password",
@@ -46,7 +48,7 @@ const SignUpPage = () => {
       name: "confirmPassword",
       type: "password",
       placeholder: "Confirm your password",
-      value : formData.confirmPassword,
+      value: formData.confirmPassword,
     },
   ];
 
@@ -59,41 +61,42 @@ const SignUpPage = () => {
 
   const handleSignUp = async (e) => {
     e.preventDefault();
-   
+
     const formData = new FormData(e.target);
     const userData = {};
-    formData.forEach((value, key) =>{
-      userData[key] =value;
+    formData.forEach((value, key) => {
+      userData[key] = value;
     });
 
-    if (userData.password !== userData.confirmPassword){
-      setError("Passwords do not match");
+    if (userData.password !== userData.confirmPassword) {
+      toast.error("Passwords do not match");
       return;
     }
 
-    setError (null);
+    setError(null);
 
     try {
       const response = await axios.post(`${API_URL}/api/users`, userData);
-  
-    if (response.status === 201){
-      navigate("/login");
+
+      if (response.status === 201) {
+        toast.success("Sign-up successful! Redirecting to login...");
+        setTimeout(() => navigate("/login"), 3000);
+      }
+    } catch (error) {
+      console.error("Error during sign-up", error);
+      toast.error(error.response?.data?.message || "An error occured");
     }
-  } catch (error){
-    console.error("Error during sign-up", error);
-    setError(error.response?.data?.message || "An error occured")
-  }
   };
 
   return (
     <AuthCardLayout headerText="Join PathWise">
-      {error && <p className="error">{error}</p>}
+       <ToastContainer/>
       <FormComponent
         formFields={signUpFields}
         buttonText="Sign Up"
         onSubmit={handleSignUp}
         onChange={handleChange}
-        value = {formData}
+        value={formData}
       />
       <p className="signup__link">
         Already have an account?
