@@ -1,0 +1,60 @@
+@use "../../styles/partials/variables.scss" as *;
+
+.auth-layout {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+  
+    &__background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        45deg,
+        $primary-color-1,
+        $primary-color-2,
+        $background-color-1,
+        $primary-color-1
+      );
+      background-size: 300% 300%;
+      animation: bgAnimation 5s infinite alternate;
+      z-index: -1;
+    }
+  
+    &__card {
+      background: white;
+      padding: 3rem 3rem 2rem 3rem;
+      border-radius: 10px;
+      box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      max-width: 500px;
+      font-family: "Raleway";
+    }
+  
+    &__header {
+      font-size: 3rem;
+      font-weight: 400;
+      border-bottom: 1px solid $secondary-color-2;
+      padding-bottom: 20px;
+    }
+    &__logo {
+      width: 80px;
+    }
+}
+.sub-footer{
+    font-size: 10px;
+}
+// Keyframe for background animation
+@keyframes bgAnimation {
+    0% {
+      background-position: 0% 50%;
+    }
+    100% {
+      background-position: 100% 50%;
+    }
+  }

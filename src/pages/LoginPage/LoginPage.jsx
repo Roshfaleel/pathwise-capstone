@@ -1,22 +1,30 @@
-import React from 'react';
-import './LoginPage.scss';
+import React from "react";
+import "./LoginPage.scss";
 import logo from "../../assets/images/PW_Logo.png";
-
+import { Link } from "react-router-dom";
+import FormComponent from "../../components/FormComponent/FormComponent";
+import AuthCardLayout from "../../components/AuthCardLayout/AuthCardLayout";
 
 const LoginPage = () => {
+  const loginFields = [
+    { label: "Email", id: "email", name: "email", type: "text", placeholder: "Your email address" },
+    { label: "Password", id: "password", name: "password", type: "password", placeholder: "Password" },
+  ];
+  const handleLogin = (e) => {
+    e.preventDefault();
+    // Handle login logic
+  };
   return (
-    <div className="login-page">
-      <div className="login-page__background"></div>
-      <div className="login-page__card">
-        <img className='login-page__logo' src={logo}/>
-        <h2>Welcome Back to PathWise</h2>
-        <form>
-          <input type="text" placeholder="Username" />
-          <input type="password" placeholder="Password" />
-          <button type="submit">Login</button>
-        </form>
-      </div>
-    </div>
+    <AuthCardLayout headerText="Welcome Back to PathWise">
+        <FormComponent formFields={loginFields} buttonText="Login" onSubmit={handleLogin} />
+        <p className="login-page__link">
+          Don't have an account ?
+          <Link to="/signup">
+            {" "}
+            <strong>Sign Up</strong>
+          </Link>
+        </p>
+        </AuthCardLayout>
   );
 };
 
