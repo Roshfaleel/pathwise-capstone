@@ -28,10 +28,10 @@ function SideBar() {
           />
         </div>
         <Nav className="flex-column  flex-grow-1">
-          <NavLink href="#dashboard" className="nav-link" activeclassName="active">Dashboard</NavLink>
-          <Nav.Link href="#achievements">Achievements</Nav.Link>
-          <Nav.Link href="#skills">Skills</Nav.Link>
-          <Nav.Link href="#settings">Settings</Nav.Link>
+          <Nav.Link href="/dashboard" >Dashboard</Nav.Link>
+          <Nav.Link href="/achievements">Achievements</Nav.Link>
+          <Nav.Link href="/skills">Skills</Nav.Link>
+          <Nav.Link href="/myaccount">My Account</Nav.Link>
         </Nav>
         <div className="sub-footer">
           <p>© PathWise Inc. All Rights Reserved.</p>
