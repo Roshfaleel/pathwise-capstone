@@ -1,5 +1,6 @@
 import "./Dashboard.scss";
 import { Card, Container } from "react-bootstrap";
+import TaskManagement from "../../components/TaskManagement/TaskManagement";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -15,6 +16,12 @@ function Dashboard() {
   const [skills, setSkills] = useState([]);
   const [achievements, setAchievements] = useState([]);
   const [error, setError] = useState(null);
+
+  const tasks = [
+    { id: 1, name: "Finish React tutorial", completed: true },
+    { id: 2, name: "Start JavaScript exercises", completed: false },
+    { id: 3, name: "Plan portfolio sections", completed: false },
+  ];
 
   useEffect(() => {
     const fetchDetails = async () => {
@@ -98,13 +105,25 @@ function Dashboard() {
               <Card className="sub-card">
                 <Card.Body>
                   <Card.Title>Skills Overview</Card.Title>
+                  <div className="bar-container">
                   <Bar data={skillsData} options={{ indexAxis: "y" }}/>
+                  </div>
                 </Card.Body>
               </Card>
               <Card className="sub-card">
                 <Card.Body>
                   <Card.Title>Achievements Overview</Card.Title>
+                  <div className="chart-container">
                   <Doughnut data={achievementsData} />
+                  </div>
+                </Card.Body>
+              </Card>
+              <Card className="sub-card">
+                <Card.Body>
+                  <Card.Title>Task Management</Card.Title>
+                  <div className="chart-container">
+                  <TaskManagement tasks={tasks}/>
+                  </div>
                 </Card.Body>
               </Card>
             </div>
