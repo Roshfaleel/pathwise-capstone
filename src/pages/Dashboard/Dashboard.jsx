@@ -1,18 +1,30 @@
 import "./Dashboard.scss";
-import { Card, Container } from "react-bootstrap";
+import { Card, Container, Row, Col } from "react-bootstrap";
 import TaskManagement from "../../components/TaskManagement/TaskManagement";
 import GoalTracking from "../../components/GoalTracking/GoalTracking";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Bar, Doughnut } from "react-chartjs-2";
-import { Chart as ChartJS, BarElement, CategoryScale, LinearScale, ArcElement, Tooltip, Legend } from "chart.js";
-ChartJS.register(BarElement, CategoryScale, LinearScale, ArcElement, Tooltip, Legend);
-
+import {
+  Chart as ChartJS,
+  BarElement,
+  CategoryScale,
+  LinearScale,
+  ArcElement,
+  Tooltip,
+  Legend,
+} from "chart.js";
+ChartJS.register(
+  BarElement,
+  CategoryScale,
+  LinearScale,
+  ArcElement,
+  Tooltip,
+  Legend
+);
 
 function Dashboard() {
-  const location = useLocation();
   const [user, setUser] = useState(null);
   const [skills, setSkills] = useState([]);
   const [achievements, setAchievements] = useState([]);
@@ -26,8 +38,18 @@ function Dashboard() {
 
   const goals = [
     { id: 1, name: "Learn React Basics", progress: 70, deadline: "2024-12-10" },
-    { id: 2, name: "Complete JavaScript Course", progress: 40, deadline: "2024-12-15" },
-    { id: 3, name: "Build a Portfolio Website", progress: 90, deadline: "2024-12-20" },
+    {
+      id: 2,
+      name: "Complete JavaScript Course",
+      progress: 40,
+      deadline: "2024-12-15",
+    },
+    {
+      id: 3,
+      name: "Build a Portfolio Website",
+      progress: 90,
+      deadline: "2024-12-20",
+    },
   ];
 
   useEffect(() => {
@@ -66,11 +88,11 @@ function Dashboard() {
   }
 
   const skillsData = {
-    labels: skills.map(skill => skill.skill_name),
+    labels: skills.map((skill) => skill.skill_name),
     datasets: [
       {
         label: "Proficiency Level",
-        data: skills.map(skill => {
+        data: skills.map((skill) => {
           switch (skill.proficiency_level) {
             case "Advanced":
               return 3;
@@ -82,62 +104,76 @@ function Dashboard() {
               return 0;
           }
         }),
-        backgroundColor: "rgba(75, 192, 192, 0.6)",
-        borderColor: "rgba(75, 192, 192, 1)",
+        backgroundColor: "rgba(17,6,61, 0.8)",
+        borderColor: "rgba(51, 51, 255, 1)",
         borderWidth: 1,
       },
     ],
   };
 
   const achievementsData = {
-    labels: achievements.map(achievement => achievement.achievement_name),
+    labels: achievements.map((achievement) => achievement.achievement_name),
     datasets: [
       {
         label: "Achievements",
-        data: achievements.map(() => 1), // Each achievement gets a count of 1
-        backgroundColor: ["#FF5733", "#33FF57", "#3357FF"], // Different colors for each achievement
+        data: achievements.map(() => 1), 
+        backgroundColor: ["#11063d", "#006989", "#a8e0f7"], 
       },
     ],
   };
 
-
   return (
-    <div className="d-flex">
-      <div className="content">
+    <div className="dashboard">
+      <div className="dashboard__content">
         <Container>
-          <Card className="main-card">
-            <h1>Welcome to PathWise Dashboard</h1>
-            <h2>Hello {user?.name || "Guest"}</h2>
-            <div className="card-grid">
-              <Card className="sub-card">
+          <Card className="dashboard__main-card">
+            <h1 className="dashboard__title">Welcome to PathWise Dashboard</h1>
+            <h2 className="dashboard__subtitle">
+              Hello {user?.name || "Guest"} !
+            </h2>
+            {/* First Row: Skills and Achievements */}
+            <div className="dashboard__row">
+              <Card className="dashboard__sub-card">
                 <Card.Body>
-                  <Card.Title>Skills Overview</Card.Title>
-                  <div className="bar-container">
-                  <Bar data={skillsData} options={{ indexAxis: "y" }}/>
+                  <Card.Title className="dashboard__sub-card-title">
+                    Skills Overview
+                  </Card.Title>
+                  <div className="dashboard__bar-container">
+                    <Bar data={skillsData} options={{ indexAxis: "y" }} />
                   </div>
                 </Card.Body>
               </Card>
-              <Card className="sub-card">
+              <Card className="dashboard__sub-card">
                 <Card.Body>
-                  <Card.Title>Achievements Overview</Card.Title>
-                  <div className="chart-container">
-                  <Doughnut data={achievementsData} />
+                  <Card.Title className="dashboard__sub-card-title">
+                    Achievements Overview
+                  </Card.Title>
+                  <div className="dashboard__chart-container">
+                    <Doughnut data={achievementsData} />
                   </div>
                 </Card.Body>
               </Card>
-              <Card className="sub-card">
+            </div>
+
+            {/* Second Row: Goals and Tasks */}
+            <div className="dashboard__row">
+              <Card className="dashboard__sub-card">
                 <Card.Body>
-                  <Card.Title>Task Management</Card.Title>
-                  <div className="chart-container">
-                  <TaskManagement tasks={tasks}/>
+                  <Card.Title className="dashboard__sub-card-title">
+                    Task Management
+                  </Card.Title>
+                  <div className="dashboard__chart-container">
+                    <TaskManagement tasks={tasks} />
                   </div>
                 </Card.Body>
               </Card>
-              <Card className="sub-card">
+              <Card className="dashboard__sub-card">
                 <Card.Body>
-                  <Card.Title>GoalTracking</Card.Title>
-                  <div className="chart-container">
-                  <GoalTracking goals={goals}/>
+                  <Card.Title className="dashboard__sub-card-title">
+                    Goal Tracking
+                  </Card.Title>
+                  <div className="dashboard__chart-container">
+                    <GoalTracking goals={goals} />
                   </div>
                 </Card.Body>
               </Card>
