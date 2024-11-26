@@ -117,7 +117,7 @@ function Dashboard() {
       {
         label: "Achievements",
         data: achievements.map(() => 1), 
-        backgroundColor: ["#11063d", "#006989", "#a8e0f7"], 
+        backgroundColor: ["#11063d", "#006989", "#a8e0f7","#0064e0"], 
       },
     ],
   };
