@@ -28,10 +28,13 @@ const LoginPage = () => {
       const response = await axios.post(`${API_URL}/api/users/login`, {
         email: formData.email,
         password: formData.password,
-      });
+      });      
 
       if (response.status === 200) {
+        const userId = response.data.user.user_id; //getting the user ID
+        localStorage.setItem("userId", userId) // save to local storage
         console.log("User:", response.data.user);
+        console.log(userId)
         toast.success("Login successful");
         setTimeout(() => {
           navigate("/dashboard");
