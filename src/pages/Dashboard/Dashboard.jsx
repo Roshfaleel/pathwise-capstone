@@ -1,5 +1,5 @@
 import "./Dashboard.scss";
-import { Card, Container, Row, Col } from "react-bootstrap";
+import { Card, Container} from "react-bootstrap";
 import TaskManagement from "../../components/TaskManagement/TaskManagement";
 import GoalTracking from "../../components/GoalTracking/GoalTracking";
 import "bootstrap/dist/css/bootstrap.min.css";
