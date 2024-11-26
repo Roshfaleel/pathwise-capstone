@@ -1,0 +1,20 @@
+@use "../../styles/partials/variables.scss" as *;
+
+
+.task-management{
+    &__list{
+        margin-top: 20px;
+    }
+
+    &__card{
+        background-color: rgba(178, 184, 241, 0.418);
+    }
+
+    &__title{
+        font-size: 24px;
+    }
+}
+.list-group-item-success {
+    background-color: #006989 !important; 
+    color: #fff !important; 
+  }
