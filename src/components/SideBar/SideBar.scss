@@ -1,37 +1,42 @@
-// Sidebar.css
+@use "../../styles/partials/variables.scss" as *;
+
+
 .sidebar {
-    width: 250px; // Adjust the width as needed
-    position: fixed; // Fix it to the left side
+    width: 250px; 
+    position: fixed; 
     left: 0;
     top: 0;
     bottom: 0;
-    z-index: 1030; // Ensure it stays on top of the content
-    border-right: 1px solid #ddd; // Optional: adds a border to separate it visually
-
+    z-index: 1030; 
+    border-right: 1px solid #ddd; 
 
     &__img{
         width: 60px;
         height: auto;
     }
+    
+    &__avatar{
+      width: 150px;
+      object-fit: cover;
+    }
+
+    &__link{
+      padding: 10px 15px;
+      color: #333;
+      text-decoration: none;
+      transition: background-color 0.3s, color 0.3s;
+    
+      &:hover {
+        background-color: $secondary-color-2; 
+      }
+
+      &--active {
+        background-color: $primary-color-1; 
+        color: white; 
+        border-radius: 4px; 
+      }
+    }
+
   }
 
-  .avatar{
-    width: 150px;
-    object-fit: cover;
-  }
-  .nav-link {
-    padding: 10px 15px;
-    color: #333;
-    text-decoration: none;
-    transition: background-color 0.3s, color 0.3s;
   
-    &:hover {
-      background-color: #f0f0f0; // Highlight on hover
-    }
-  }
-  
-  .nav-link--active {
-    background-color: #a0c5ec; // Highlight color
-    color: white; // Text color for active link
-    border-radius: 4px; // Optional: Add rounded corners
-  }
