@@ -1,6 +1,7 @@
 import "./Dashboard.scss";
 import { Card, Container } from "react-bootstrap";
 import TaskManagement from "../../components/TaskManagement/TaskManagement";
+import GoalTracking from "../../components/GoalTracking/GoalTracking";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -21,6 +22,12 @@ function Dashboard() {
     { id: 1, name: "Finish React tutorial", completed: true },
     { id: 2, name: "Start JavaScript exercises", completed: false },
     { id: 3, name: "Plan portfolio sections", completed: false },
+  ];
+
+  const goals = [
+    { id: 1, name: "Learn React Basics", progress: 70, deadline: "2024-12-10" },
+    { id: 2, name: "Complete JavaScript Course", progress: 40, deadline: "2024-12-15" },
+    { id: 3, name: "Build a Portfolio Website", progress: 90, deadline: "2024-12-20" },
   ];
 
   useEffect(() => {
@@ -123,6 +130,14 @@ function Dashboard() {
                   <Card.Title>Task Management</Card.Title>
                   <div className="chart-container">
                   <TaskManagement tasks={tasks}/>
+                  </div>
+                </Card.Body>
+              </Card>
+              <Card className="sub-card">
+                <Card.Body>
+                  <Card.Title>GoalTracking</Card.Title>
+                  <div className="chart-container">
+                  <GoalTracking goals={goals}/>
                   </div>
                 </Card.Body>
               </Card>
