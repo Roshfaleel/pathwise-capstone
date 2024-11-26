@@ -1,0 +1,9 @@
+.sidebar-layout{
+    display: flex;
+    height: 100vh;
+
+    &__content{
+        flex: 1;
+        overflow-y: auto;
+    }
+}
