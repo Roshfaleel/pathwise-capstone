@@ -72,6 +72,30 @@ function SkillsTrackerPage() {
     }
   };
 
+  const handleDelete = async (id) =>{
+    try {
+      await axios.delete(`${API_URL}/api/users/${userId}/skills/${id}`);
+      setSkills(skills.filter((skill) => skill.id !== id));
+    } catch (error) {
+      console.error("Error deleting skill:", error);
+      setError("Failed to delete skill");
+    }
+  }
+
+   // Modal to edit sills
+   const handleEdit = (skill) => {
+    setForm(skill);
+    setIsEditing(true);
+    setShowModal(true);
+  };
+
+  // Modal to add skill
+  const handleAdd = () => {
+    setForm({ id: null, name: "", proficiency: "" });
+    setIsEditing(false);
+    setShowModal(true);
+  };
+
   return <div className="skills">Skill Tracking Page</div>;
 }
 
