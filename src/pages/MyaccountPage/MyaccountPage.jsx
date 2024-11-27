@@ -3,9 +3,12 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Card, Image } from "react-bootstrap";
 import avatar from "../../assets/images/avatar.jpg"
+import Timeline from "../../components/Timeline/Timeline";
 
 function MyaccountPage() {
   const [userDetails, setUserDetails] = useState(null);
+  const [achievements, setAchievements] = useState([]);
+  const [skills, setSkills] = useState([])
 
   useEffect(() => {
     const userId = localStorage.getItem("userId");
@@ -16,6 +19,13 @@ function MyaccountPage() {
         const userResponse = await axios.get(`${API_URL}/api/users/${userId}`);
         const userData = userResponse.data;
         setUserDetails(userData)
+
+        const achievementsResponse = await axios.get(`${API_URL}/api/users/${userId}/achievements`);
+        setAchievements(achievementsResponse.data);
+
+        const skillsResponse = await axios.get(`${API_URL}/api/users/${userId}/skills`);
+        setSkills(skillsResponse.data);
+
       } catch (error) {
         console.error("Error fetching user details:", error);
       }
@@ -43,6 +53,8 @@ function MyaccountPage() {
           </Card.Text>
         </Card.Body>
       </Card>
+
+      <Timeline achievements={achievements} skills={skills}/>
     </div>
   );
 }
