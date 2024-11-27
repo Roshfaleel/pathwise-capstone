@@ -1,6 +1,16 @@
 import "./SkillsTrackerPage.scss";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import {
+  Button,
+  Card,
+  Col,
+  Container,
+  Form,
+  Modal,
+  Row,
+  Alert
+} from "react-bootstrap";
 
 function SkillsTrackerPage() {
   const [skills, setSkills] = useState([]);
@@ -72,7 +82,7 @@ function SkillsTrackerPage() {
     }
   };
 
-  const handleDelete = async (id) =>{
+  const handleDelete = async (id) => {
     try {
       await axios.delete(`${API_URL}/api/users/${userId}/skills/${id}`);
       setSkills(skills.filter((skill) => skill.id !== id));
@@ -80,10 +90,10 @@ function SkillsTrackerPage() {
       console.error("Error deleting skill:", error);
       setError("Failed to delete skill");
     }
-  }
+  };
 
-   // Modal to edit sills
-   const handleEdit = (skill) => {
+  // Modal to edit sills
+  const handleEdit = (skill) => {
     setForm(skill);
     setIsEditing(true);
     setShowModal(true);
@@ -96,7 +106,80 @@ function SkillsTrackerPage() {
     setShowModal(true);
   };
 
-  return <div className="skills">Skill Tracking Page</div>;
+  return (
+    <div className="skills">
+      <h1>Skill Tracking Page</h1>
+      {error && <Alert variant="danger">{error}</Alert>}
+      <Container>
+        <Button variant="primary" onClick={handleAdd} className="mb-4">
+          Add Skill
+        </Button>
+        <Row>
+          {skills.map((skill) => (
+            <Col key={skill.id} xs={12} md={6} lg={4} className="mb-4">
+              <Card>
+                <Card.Body>
+                  <Card.Title>{skill.name}</Card.Title>
+                  <Card.Text>Proficiency: {skill.proficiency}</Card.Text>
+                  <Button
+                    variant="outline-secondary"
+                    onClick={() => handleEdit(skill)}
+                    className="me-2"
+                  >
+                    Edit
+                  </Button>
+                  <Button
+                    variant="outline-danger"
+                    onClick={() => handleDelete(skill.id)}
+                  >
+                    Delete
+                  </Button>
+                </Card.Body>
+              </Card>
+            </Col>
+          ))}
+        </Row>
+
+        <Modal show={showModal} onHide={() => setShowModal(false)} centered>
+          <Modal.Header closeButton>
+            <Modal.Title>{isEditing ? "Edit Skill" : "Add Skill"}</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <Form onSubmit={handleSubmit}>
+              <Form.Group controlId="skillName" className="mb-3">
+                <Form.Label>Skill Name</Form.Label>
+                <Form.Control
+                  type="text"
+                  name="name"
+                  value={form.name}
+                  onChange={handleInputChange}
+                  placeholder="Enter skill name"
+                  required
+                />
+              </Form.Group>
+              <Form.Group controlId="proficiencyLevel" className="mb-3">
+                <Form.Label>Proficiency Level</Form.Label>
+                <Form.Select
+                  name="proficiency"
+                  value={form.proficiency}
+                  onChange={handleInputChange}
+                  required
+                >
+                  <option value="">Select proficiency</option>
+                  <option value="Beginner">Beginner</option>
+                  <option value="Intermediate">Intermediate</option>
+                  <option value="Advanced">Advanced</option>
+                </Form.Select>
+              </Form.Group>
+              <Button variant="primary" type="submit">
+                {isEditing ? "Save Changes" : "Add Skill"}
+              </Button>
+            </Form>
+          </Modal.Body>
+        </Modal>
+      </Container>
+    </div>
+  );
 }
 
 export default SkillsTrackerPage;
