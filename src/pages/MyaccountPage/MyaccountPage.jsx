@@ -18,13 +18,15 @@ function MyaccountPage() {
       try {
         const userResponse = await axios.get(`${API_URL}/api/users/${userId}`);
         const userData = userResponse.data;
-        setUserDetails(userData)
+        setUserDetails(userData);
 
         const achievementsResponse = await axios.get(`${API_URL}/api/users/${userId}/achievements`);
-        setAchievements(achievementsResponse.data);
+        const achievementsData = achievementsResponse.data || {};  
+        setAchievements(achievementsData.achievements || []);  
 
         const skillsResponse = await axios.get(`${API_URL}/api/users/${userId}/skills`);
-        setSkills(skillsResponse.data);
+        const skillsData = skillsResponse.data || {};
+        setSkills(skillsData.skills || []);
 
       } catch (error) {
         console.error("Error fetching user details:", error);
@@ -35,6 +37,7 @@ function MyaccountPage() {
   if (!userDetails) {
     return <p>Loading...</p>;
   }
+   
 
   return (
     <div className="account">
