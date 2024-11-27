@@ -2,6 +2,7 @@ import "./MyaccountPage.scss";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Card, Image } from "react-bootstrap";
+import avatar from "../../assets/images/avatar.jpg"
 
 function MyaccountPage() {
   const [userDetails, setUserDetails] = useState(null);
@@ -27,7 +28,21 @@ function MyaccountPage() {
 
   return (
     <div className="account">
-      <h1>My Account</h1>      
+      <h1 className="account__header">My Account</h1>      
+      <Card className="account__card" >
+        <Image
+        src={avatar}
+        alt="avatar"
+        roundedCircle
+        style={{ width: "100px", height: "100px", margin: "auto", marginTop: "10px" }}
+        />
+        <Card.Body>
+          <Card.Title>{userDetails.name}</Card.Title>
+          <Card.Text>
+            <strong>Email :</strong> {userDetails.email}
+          </Card.Text>
+        </Card.Body>
+      </Card>
     </div>
   );
 }
