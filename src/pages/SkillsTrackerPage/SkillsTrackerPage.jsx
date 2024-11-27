@@ -1,6 +1,8 @@
 import "./SkillsTrackerPage.scss";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import deleteIcon from "../../assets/icons/delete_outline-24px.svg";
+import editIcon from "../../assets/icons/edit-24px.svg";
 import {
   Button,
   Card,
@@ -108,10 +110,10 @@ function SkillsTrackerPage() {
 
   return (
     <div className="skills">
-      <h1>Skill Tracking Page</h1>
+      <h1 className="skills__header">Your Skills</h1>
       {error && <Alert variant="danger">{error}</Alert>}
-      <Container>
-        <Button variant="primary" onClick={handleAdd} className="mb-4">
+      <Container className="skills__container">
+        <Button className="skills__button mb-4" variant="primary" onClick={handleAdd}>
           Add Skill
         </Button>
         <Row>
@@ -121,19 +123,20 @@ function SkillsTrackerPage() {
                 <Card.Body>
                   <Card.Title>{skill.name}</Card.Title>
                   <Card.Text>Proficiency: {skill.proficiency}</Card.Text>
-                  <Button
-                    variant="outline-secondary"
-                    onClick={() => handleEdit(skill)}
-                    className="me-2"
-                  >
-                    Edit
-                  </Button>
-                  <Button
-                    variant="outline-danger"
-                    onClick={() => handleDelete(skill.id)}
-                  >
-                    Delete
-                  </Button>
+                  <div className="skills__buttons">
+                      <img
+                        className="skills__icon"
+                        src={editIcon}
+                        alt="Edit icon"
+                        onClick={() => handleEdit(skill)}
+                      />
+                      <img
+                        className="skills__icon"
+                        src={deleteIcon}
+                        alt="Delete icon"
+                        onClick={() => handleDelete(skill.id)}
+                      />
+                      </div>
                 </Card.Body>
               </Card>
             </Col>
