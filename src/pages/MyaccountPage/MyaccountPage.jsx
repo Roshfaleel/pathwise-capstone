@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { Card, Image } from "react-bootstrap";
 import avatar from "../../assets/images/avatar.jpg"
 import Timeline from "../../components/Timeline/Timeline";
+import PDFdownload from "../../components/CreatePDF/CreatePDF";
 
 function MyaccountPage() {
   const [userDetails, setUserDetails] = useState(null);
@@ -55,6 +56,7 @@ function MyaccountPage() {
             <strong>Email :</strong> {userDetails.email}
           </Card.Text>
         </Card.Body>
+        <PDFdownload userDetails={userDetails} achievements={achievements} skills={skills} />
       </Card>
 
       <Timeline achievements={achievements} skills={skills}/>
