@@ -1,5 +1,5 @@
 import "./Dashboard.scss";
-import { Card, Container, Row, Col } from "react-bootstrap";
+import { Card, Container} from "react-bootstrap";
 import TaskManagement from "../../components/TaskManagement/TaskManagement";
 import GoalTracking from "../../components/GoalTracking/GoalTracking";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -117,7 +117,7 @@ function Dashboard() {
       {
         label: "Achievements",
         data: achievements.map(() => 1), 
-        backgroundColor: ["#11063d", "#006989", "#a8e0f7"], 
+        backgroundColor: ["#11063d", "#006989", "#a8e0f7","#0064e0"], 
       },
     ],
   };
