@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Card, Button, Form, Row, Col } from "react-bootstrap";
 import deleteIcon from "../../assets/icons/delete_outline-24px.svg";
 import editIcon from "../../assets/icons/edit-24px.svg";
@@ -31,7 +31,7 @@ function AchievementsPage() {
       const achievementsData = achievementsResponse.data.achievements || [];
 
       const formattedAchievements = achievementsData.map((achievement) => ({
-        id: achievement.achievement_id, // Assuming the response has an 'achievement_id' field
+        id: achievement.achievement_id, 
         name: achievement.achievement_name,
         description: achievement.description,
         date: new Date(achievement.date).toLocaleDateString(),
