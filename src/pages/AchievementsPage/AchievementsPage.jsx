@@ -4,6 +4,7 @@ import deleteIcon from "../../assets/icons/delete_outline-24px.svg";
 import editIcon from "../../assets/icons/edit-24px.svg";
 import axios from "axios";
 import "./AchievementsPage.scss";
+import AchievementsList from "../../components/AchievementsList/AchievementsList";
 
 function AchievementsPage() {
   const [achievements, setAchievements] = useState([]);
@@ -31,7 +32,7 @@ function AchievementsPage() {
       const achievementsData = achievementsResponse.data.achievements || [];
 
       const formattedAchievements = achievementsData.map((achievement) => ({
-        id: achievement.achievement_id, 
+        id: achievement.achievement_id,
         name: achievement.achievement_name,
         description: achievement.description,
         date: new Date(achievement.date).toLocaleDateString(),
@@ -155,53 +156,17 @@ function AchievementsPage() {
       {/* Display error message */}
       {error && <div className="alert alert-danger">{error}</div>}
       {/* Display Achievements */}
-      <Card className="achievements__card mb-4">
-        <Card.Body>
-          <Row>
-            {achievements.map((achievement, index) => (
-              <Col
-                key={`${achievement.name}-${achievement.date}-${index}`}
-                sm={6}
-                md={4}
-              >
-                <Card className="achievements__card-body mb-3">
-                  <Card.Body>
-                    <Card.Title className="achievements__title">
-                      {achievement.name}
-                    </Card.Title>
-                    <Card.Subtitle className="mb-2 text-muted">
-                      {achievement.type}
-                    </Card.Subtitle>
-                    <Card.Text>{achievement.description}</Card.Text>
-                    <Card.Text>
-                      <small>{achievement.date}</small>
-                    </Card.Text>
-                    <div className="achievements__buttons">
-                      <img
-                        className="achievements__icon"
-                        src={editIcon}
-                        alt="Edit icon"
-                        onClick={() => handleEdit(achievement)}
-                      />
-                      <img
-                        className="achievements__icon"
-                        src={deleteIcon}
-                        alt="Delete icon"
-                        onClick={() => handleDelete(achievement.id)}
-                      />
-                    </div>
-                  </Card.Body>
-                </Card>
-              </Col>
-            ))}
-          </Row>
-        </Card.Body>
-      </Card>
-
+      <AchievementsList
+        achievements={achievements}
+        onEdit={handleEdit}
+        onDelete={handleDelete}
+      />
       {isEditing && (
         <Card className="achievements__edit mb-4">
           <Card.Body>
-            <Card.Title className="achievements__edit-title">Edit Achievement</Card.Title>
+            <Card.Title className="achievements__edit-title">
+              Edit Achievement
+            </Card.Title>
             <Form onSubmit={handleSave}>
               <Form.Group className="achievements__form" controlId="formName">
                 <Form.Label>Achievement Name</Form.Label>
@@ -218,7 +183,10 @@ function AchievementsPage() {
                   required
                 />
               </Form.Group>
-              <Form.Group className="achievements__form" controlId="formDescription">
+              <Form.Group
+                className="achievements__form"
+                controlId="formDescription"
+              >
                 <Form.Label>Description</Form.Label>
                 <Form.Control
                   type="text"
@@ -289,13 +257,18 @@ function AchievementsPage() {
       {/* Add Achievement Form */}
       <Card className="achievements__add mb-4">
         <Card.Body>
-          <Card.Title className="achievements__edit-title" >Add Achievement</Card.Title>
+          <Card.Title className="achievements__edit-title">
+            Add Achievement
+          </Card.Title>
           <Form onSubmit={handleAdd}>
             <Form.Group className="achievements__form" controlId="formName">
               <Form.Label>Achievement Name</Form.Label>
               <Form.Control type="text" name="name" required />
             </Form.Group>
-            <Form.Group className="achievements__form" controlId="formDescription">
+            <Form.Group
+              className="achievements__form"
+              controlId="formDescription"
+            >
               <Form.Label>Description</Form.Label>
               <Form.Control type="text" name="description" required />
             </Form.Group>
