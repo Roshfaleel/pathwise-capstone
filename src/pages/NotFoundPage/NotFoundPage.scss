@@ -1,0 +1,11 @@
+.error-container{
+    width: 100%;
+    &__img{
+        width: 100%;
+    }
+
+    &__button{
+        display: flex;
+        justify-content: center;
+    }
+}
