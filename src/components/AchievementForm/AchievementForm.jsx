@@ -1,6 +1,9 @@
 import { Form, Button, Card } from "react-bootstrap";
+import { useRef } from "react";
 
 function AchievementForm({ onAdd }) {
+    const formRef = useRef(null);
+
   const handleAdd = (e) => {
     e.preventDefault();
     const newAchievement = {
@@ -10,6 +13,10 @@ function AchievementForm({ onAdd }) {
       type: e.target.type.value,
     };
     onAdd(newAchievement);
+
+    if (formRef.current) {
+        formRef.current.reset(); 
+      }
   };
 
   return (
