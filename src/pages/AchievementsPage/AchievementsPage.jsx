@@ -6,6 +6,7 @@ import axios from "axios";
 import "./AchievementsPage.scss";
 import AchievementsList from "../../components/AchievementsList/AchievementsList";
 import EditAchievementForm from "../../components/EditAchievementForm/EditAchievementForm";
+import AchievementForm from "../../components/AchievementForm/AchievementForm";
 
 function AchievementsPage() {
   const [achievements, setAchievements] = useState([]);
@@ -58,15 +59,7 @@ function AchievementsPage() {
   };
 
   // Handle save changes to an achievement
-  const handleSave = async (e) => {
-    e.preventDefault();
-
-    const updatedAchievement = {
-      achievement_name: currentAchievement.name,
-      description: currentAchievement.description,
-      date: currentAchievement.date,
-      type: currentAchievement.type,
-    };
+  const handleSave = async (updatedAchievement) => {
 
     const userId = localStorage.getItem("userId");
     const API_URL = import.meta.env.VITE_API_URL;
@@ -97,35 +90,34 @@ function AchievementsPage() {
   };
 
   // Handle adding a new achievement
-  const handleAdd = async (e) => {
-    e.preventDefault();
-
-    const newAchievement = {
-      achievement_name: e.target.name.value,
-      description: e.target.description.value,
-      date: e.target.date.value,
-      type: e.target.type.value,
-    };
-
+  const handleAdd = async (newAchievement) => {
     const userId = localStorage.getItem("userId");
     const API_URL = import.meta.env.VITE_API_URL;
 
     try {
-      // Send POST request to add new achievement
       const response = await axios.post(
         `${API_URL}/api/users/${userId}/achievements`,
         newAchievement
       );
-
+  
       if (response.status === 201) {
-        console.log("Achievement added successfully:", response.data.message);
-        setAchievements([...achievements, newAchievement]);
+        console.log("Achievement added successfully:", response.data);
+        const addedAchievement = {
+          ...newAchievement,
+          id: response.data.achievement_id, 
+        };
+
+        setAchievements((prevAchievements) => [
+          ...prevAchievements,
+          addedAchievement,
+        ]);
+        fetchAchievements();
       }
     } catch (error) {
       setError("Failed to add achievement");
     }
   };
-
+  
   // Handle delete an achievement
   const handleDelete = async (achievementId) => {
     const userId = localStorage.getItem("userId");
@@ -169,43 +161,8 @@ function AchievementsPage() {
           onCancel={() => setIsEditing(false)}
         />
       )}
-
       {/* Add Achievement Form */}
-      <Card className="achievements__add mb-4">
-        <Card.Body>
-          <Card.Title className="achievements__edit-title">
-            Add Achievement
-          </Card.Title>
-          <Form onSubmit={handleAdd}>
-            <Form.Group className="achievements__form" controlId="formName">
-              <Form.Label>Achievement Name</Form.Label>
-              <Form.Control type="text" name="name" required />
-            </Form.Group>
-            <Form.Group
-              className="achievements__form"
-              controlId="formDescription"
-            >
-              <Form.Label>Description</Form.Label>
-              <Form.Control type="text" name="description" required />
-            </Form.Group>
-            <Form.Group className="achievements__form" controlId="formDate">
-              <Form.Label>Date</Form.Label>
-              <Form.Control type="date" name="date" required />
-            </Form.Group>
-            <Form.Group className="achievements__form" controlId="formType">
-              <Form.Label>Type</Form.Label>
-              <Form.Control as="select" name="type" required>
-                <option>Award</option>
-                <option>Certification</option>
-                <option>Other</option>
-              </Form.Control>
-            </Form.Group>
-            <Button variant="primary" type="submit">
-              Add Achievement
-            </Button>
-          </Form>
-        </Card.Body>
-      </Card>
+      <AchievementForm onAdd={handleAdd} />
     </div>
   );
 }
