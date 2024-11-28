@@ -78,7 +78,6 @@ function AchievementsPage() {
 
       if (response.status === 200) {
         console.log("Achievement updated successfully:", response.data.message);
-        // Update the achievements state locally
         setAchievements(
           achievements.map((achievement) =>
             achievement.id === currentAchievement.id

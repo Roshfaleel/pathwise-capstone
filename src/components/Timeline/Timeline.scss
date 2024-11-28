@@ -1,0 +1,31 @@
+
+.vertical-timeline {
+    width: 50%;
+    margin: 0 auto;
+  }
+  
+  .vertical-timeline-element {
+    width: 90%; 
+    margin: 10px auto; 
+    padding: 10px;
+  }
+  
+ 
+  .vertical-timeline-element .icon {
+    font-size: 25px; 
+    margin-top: 10px;
+  }
+
+  .timeline{
+    &__header{
+        font-size: 14px;
+        font-weight: 600;
+    }
+  }
+  .vertical-timeline-element-content.bounce-in{
+    background-color: rgb(185, 216, 243);
+  }
+  .vertical-timeline-element-content p{
+    font-size: 12px;
+  }
+  
