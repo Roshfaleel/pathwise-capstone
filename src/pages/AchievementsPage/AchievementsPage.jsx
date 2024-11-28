@@ -4,6 +4,9 @@ import deleteIcon from "../../assets/icons/delete_outline-24px.svg";
 import editIcon from "../../assets/icons/edit-24px.svg";
 import axios from "axios";
 import "./AchievementsPage.scss";
+import AchievementsList from "../../components/AchievementsList/AchievementsList";
+import EditAchievementForm from "../../components/EditAchievementForm/EditAchievementForm";
+import AchievementForm from "../../components/AchievementForm/AchievementForm";
 
 function AchievementsPage() {
   const [achievements, setAchievements] = useState([]);
@@ -31,7 +34,7 @@ function AchievementsPage() {
       const achievementsData = achievementsResponse.data.achievements || [];
 
       const formattedAchievements = achievementsData.map((achievement) => ({
-        id: achievement.achievement_id, 
+        id: achievement.achievement_id,
         name: achievement.achievement_name,
         description: achievement.description,
         date: new Date(achievement.date).toLocaleDateString(),
@@ -56,15 +59,7 @@ function AchievementsPage() {
   };
 
   // Handle save changes to an achievement
-  const handleSave = async (e) => {
-    e.preventDefault();
-
-    const updatedAchievement = {
-      achievement_name: currentAchievement.name,
-      description: currentAchievement.description,
-      date: currentAchievement.date,
-      type: currentAchievement.type,
-    };
+  const handleSave = async (updatedAchievement) => {
 
     const userId = localStorage.getItem("userId");
     const API_URL = import.meta.env.VITE_API_URL;
@@ -95,35 +90,34 @@ function AchievementsPage() {
   };
 
   // Handle adding a new achievement
-  const handleAdd = async (e) => {
-    e.preventDefault();
-
-    const newAchievement = {
-      achievement_name: e.target.name.value,
-      description: e.target.description.value,
-      date: e.target.date.value,
-      type: e.target.type.value,
-    };
-
+  const handleAdd = async (newAchievement) => {
     const userId = localStorage.getItem("userId");
     const API_URL = import.meta.env.VITE_API_URL;
 
     try {
-      // Send POST request to add new achievement
       const response = await axios.post(
         `${API_URL}/api/users/${userId}/achievements`,
         newAchievement
       );
-
+  
       if (response.status === 201) {
-        console.log("Achievement added successfully:", response.data.message);
-        setAchievements([...achievements, newAchievement]);
+        console.log("Achievement added successfully:", response.data);
+        const addedAchievement = {
+          ...newAchievement,
+          id: response.data.achievement_id, 
+        };
+
+        setAchievements((prevAchievements) => [
+          ...prevAchievements,
+          addedAchievement,
+        ]);
+        fetchAchievements();
       }
     } catch (error) {
       setError("Failed to add achievement");
     }
   };
-
+  
   // Handle delete an achievement
   const handleDelete = async (achievementId) => {
     const userId = localStorage.getItem("userId");
@@ -155,168 +149,20 @@ function AchievementsPage() {
       {/* Display error message */}
       {error && <div className="alert alert-danger">{error}</div>}
       {/* Display Achievements */}
-      <Card className="achievements__card mb-4">
-        <Card.Body>
-          <Row>
-            {achievements.map((achievement, index) => (
-              <Col
-                key={`${achievement.name}-${achievement.date}-${index}`}
-                sm={6}
-                md={4}
-              >
-                <Card className="achievements__card-body mb-3">
-                  <Card.Body>
-                    <Card.Title className="achievements__title">
-                      {achievement.name}
-                    </Card.Title>
-                    <Card.Subtitle className="mb-2 text-muted">
-                      {achievement.type}
-                    </Card.Subtitle>
-                    <Card.Text>{achievement.description}</Card.Text>
-                    <Card.Text>
-                      <small>{achievement.date}</small>
-                    </Card.Text>
-                    <div className="achievements__buttons">
-                      <img
-                        className="achievements__icon"
-                        src={editIcon}
-                        alt="Edit icon"
-                        onClick={() => handleEdit(achievement)}
-                      />
-                      <img
-                        className="achievements__icon"
-                        src={deleteIcon}
-                        alt="Delete icon"
-                        onClick={() => handleDelete(achievement.id)}
-                      />
-                    </div>
-                  </Card.Body>
-                </Card>
-              </Col>
-            ))}
-          </Row>
-        </Card.Body>
-      </Card>
-
+      <AchievementsList
+        achievements={achievements}
+        onEdit={handleEdit}
+        onDelete={handleDelete}
+      />
       {isEditing && (
-        <Card className="achievements__edit mb-4">
-          <Card.Body>
-            <Card.Title className="achievements__edit-title">Edit Achievement</Card.Title>
-            <Form onSubmit={handleSave}>
-              <Form.Group className="achievements__form" controlId="formName">
-                <Form.Label>Achievement Name</Form.Label>
-                <Form.Control
-                  type="text"
-                  name="name"
-                  value={currentAchievement.name}
-                  onChange={(e) =>
-                    setCurrentAchievement({
-                      ...currentAchievement,
-                      name: e.target.value,
-                    })
-                  }
-                  required
-                />
-              </Form.Group>
-              <Form.Group className="achievements__form" controlId="formDescription">
-                <Form.Label>Description</Form.Label>
-                <Form.Control
-                  type="text"
-                  name="description"
-                  value={currentAchievement.description}
-                  onChange={(e) =>
-                    setCurrentAchievement({
-                      ...currentAchievement,
-                      description: e.target.value,
-                    })
-                  }
-                  required
-                />
-              </Form.Group>
-              <Form.Group className="achievements__form" controlId="formDate">
-                <Form.Label>Date</Form.Label>
-                <Form.Control
-                  type="date"
-                  name="date"
-                  value={
-                    new Date(currentAchievement.date)
-                      .toISOString()
-                      .split("T")[0]
-                  }
-                  onChange={(e) =>
-                    setCurrentAchievement({
-                      ...currentAchievement,
-                      date: e.target.value,
-                    })
-                  }
-                  required
-                />
-              </Form.Group>
-              <Form.Group className="achievements__form" controlId="formType">
-                <Form.Label>Type</Form.Label>
-                <Form.Control
-                  as="select"
-                  name="type"
-                  value={currentAchievement.type}
-                  onChange={(e) =>
-                    setCurrentAchievement({
-                      ...currentAchievement,
-                      type: e.target.value,
-                    })
-                  }
-                  required
-                >
-                  <option>Award</option>
-                  <option>Certification</option>
-                  <option>Other</option>
-                </Form.Control>
-              </Form.Group>
-              <Button variant="primary" type="submit">
-                Save Changes
-              </Button>
-              <Button
-                variant="secondary"
-                onClick={() => setIsEditing(false)}
-                className="ms-2"
-              >
-                Cancel
-              </Button>
-            </Form>
-          </Card.Body>
-        </Card>
+        <EditAchievementForm
+          achievement={currentAchievement}
+          onSave={handleSave}
+          onCancel={() => setIsEditing(false)}
+        />
       )}
-
       {/* Add Achievement Form */}
-      <Card className="achievements__add mb-4">
-        <Card.Body>
-          <Card.Title className="achievements__edit-title" >Add Achievement</Card.Title>
-          <Form onSubmit={handleAdd}>
-            <Form.Group className="achievements__form" controlId="formName">
-              <Form.Label>Achievement Name</Form.Label>
-              <Form.Control type="text" name="name" required />
-            </Form.Group>
-            <Form.Group className="achievements__form" controlId="formDescription">
-              <Form.Label>Description</Form.Label>
-              <Form.Control type="text" name="description" required />
-            </Form.Group>
-            <Form.Group className="achievements__form" controlId="formDate">
-              <Form.Label>Date</Form.Label>
-              <Form.Control type="date" name="date" required />
-            </Form.Group>
-            <Form.Group className="achievements__form" controlId="formType">
-              <Form.Label>Type</Form.Label>
-              <Form.Control as="select" name="type" required>
-                <option>Award</option>
-                <option>Certification</option>
-                <option>Other</option>
-              </Form.Control>
-            </Form.Group>
-            <Button variant="primary" type="submit">
-              Add Achievement
-            </Button>
-          </Form>
-        </Card.Body>
-      </Card>
+      <AchievementForm onAdd={handleAdd} />
     </div>
   );
 }
