@@ -1,6 +1,6 @@
 import "./SideBar.scss";
 import { Navbar, Nav, Image } from "react-bootstrap";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import logo from "../../assets/images/PW_Logo.png";
 import avatar from "../../assets/images/avatar.jpg";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -10,7 +10,9 @@ function SideBar() {
     <div className="sidebar d-flex">
       <Navbar bg="light" expand="lg" className="flex-column vh-100 sidebar">
         <div className="d-flex align-items-center p-3">
+          <Link to="/">
           <img src={logo} alt="Pathwise Logo" className="sidebar__img" />
+          </Link>
         </div>
         <div className="p-3">
           <Image
