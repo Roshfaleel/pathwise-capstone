@@ -5,7 +5,6 @@ import GoalTracking from "../../components/GoalTracking/GoalTracking";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { Bar, Doughnut } from "react-chartjs-2";
 import {
   Chart as ChartJS,
   BarElement,
@@ -137,7 +136,6 @@ function Dashboard() {
               <SkillsChart skills={skills}/>
               <AchievementsChart achievements={achievements}/>
             </div>
-            {/* Second Row: Goals and Tasks */}
             <div className="dashboard__row">
               <Card className="dashboard__sub-card">
                 <Card.Body>
