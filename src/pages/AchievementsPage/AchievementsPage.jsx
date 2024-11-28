@@ -5,6 +5,7 @@ import editIcon from "../../assets/icons/edit-24px.svg";
 import axios from "axios";
 import "./AchievementsPage.scss";
 import AchievementsList from "../../components/AchievementsList/AchievementsList";
+import EditAchievementForm from "../../components/EditAchievementForm/EditAchievementForm";
 
 function AchievementsPage() {
   const [achievements, setAchievements] = useState([]);
@@ -162,96 +163,11 @@ function AchievementsPage() {
         onDelete={handleDelete}
       />
       {isEditing && (
-        <Card className="achievements__edit mb-4">
-          <Card.Body>
-            <Card.Title className="achievements__edit-title">
-              Edit Achievement
-            </Card.Title>
-            <Form onSubmit={handleSave}>
-              <Form.Group className="achievements__form" controlId="formName">
-                <Form.Label>Achievement Name</Form.Label>
-                <Form.Control
-                  type="text"
-                  name="name"
-                  value={currentAchievement.name}
-                  onChange={(e) =>
-                    setCurrentAchievement({
-                      ...currentAchievement,
-                      name: e.target.value,
-                    })
-                  }
-                  required
-                />
-              </Form.Group>
-              <Form.Group
-                className="achievements__form"
-                controlId="formDescription"
-              >
-                <Form.Label>Description</Form.Label>
-                <Form.Control
-                  type="text"
-                  name="description"
-                  value={currentAchievement.description}
-                  onChange={(e) =>
-                    setCurrentAchievement({
-                      ...currentAchievement,
-                      description: e.target.value,
-                    })
-                  }
-                  required
-                />
-              </Form.Group>
-              <Form.Group className="achievements__form" controlId="formDate">
-                <Form.Label>Date</Form.Label>
-                <Form.Control
-                  type="date"
-                  name="date"
-                  value={
-                    new Date(currentAchievement.date)
-                      .toISOString()
-                      .split("T")[0]
-                  }
-                  onChange={(e) =>
-                    setCurrentAchievement({
-                      ...currentAchievement,
-                      date: e.target.value,
-                    })
-                  }
-                  required
-                />
-              </Form.Group>
-              <Form.Group className="achievements__form" controlId="formType">
-                <Form.Label>Type</Form.Label>
-                <Form.Control
-                  as="select"
-                  name="type"
-                  value={currentAchievement.type}
-                  onChange={(e) =>
-                    setCurrentAchievement({
-                      ...currentAchievement,
-                      type: e.target.value,
-                    })
-                  }
-                  required
-                >
-                  <option>Award</option>
-                  <option>Certification</option>
-                  <option>Other</option>
-                </Form.Control>
-              </Form.Group>
-              <Button variant="primary" type="submit">
-                Save Changes
-              </Button>
-              <Button
-                variant="secondary"
-                onClick={() => setIsEditing(false)}
-                className="ms-2"
-              >
-                Cancel
-              </Button>
-            </Form>
-          </Card.Body>
-        </Card>
+        <EditAchievementForm
+          achievement={currentAchievement}
+          onSave={handleSave}
+          onCancel={() => setIsEditing(false)}
+        />
       )}
 
       {/* Add Achievement Form */}
