@@ -5,7 +5,6 @@ import GoalTracking from "../../components/GoalTracking/GoalTracking";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { Bar, Doughnut } from "react-chartjs-2";
 import {
   Chart as ChartJS,
   BarElement,
@@ -15,6 +14,8 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
+import SkillsChart from "../../components/SkillsChart/SkillsChart";
+import AchievementsChart from "../../components/AchievementsChart/AchievementsChart";
 ChartJS.register(
   BarElement,
   CategoryScale,
@@ -131,31 +132,10 @@ function Dashboard() {
             <h2 className="dashboard__subtitle">
               Hello {user?.name || "Guest"} !
             </h2>
-            {/* First Row: Skills and Achievements */}
             <div className="dashboard__row">
-              <Card className="dashboard__sub-card">
-                <Card.Body>
-                  <Card.Title className="dashboard__sub-card-title">
-                    Skills Overview
-                  </Card.Title>
-                  <div className="dashboard__bar-container">
-                    <Bar data={skillsData} options={{ indexAxis: "y" }} />
-                  </div>
-                </Card.Body>
-              </Card>
-              <Card className="dashboard__sub-card">
-                <Card.Body>
-                  <Card.Title className="dashboard__sub-card-title">
-                    Achievements Overview
-                  </Card.Title>
-                  <div className="dashboard__chart-container">
-                    <Doughnut data={achievementsData} />
-                  </div>
-                </Card.Body>
-              </Card>
+              <SkillsChart skills={skills}/>
+              <AchievementsChart achievements={achievements}/>
             </div>
-
-            {/* Second Row: Goals and Tasks */}
             <div className="dashboard__row">
               <Card className="dashboard__sub-card">
                 <Card.Body>
