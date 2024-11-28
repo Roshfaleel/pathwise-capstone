@@ -15,6 +15,7 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
+import SkillsChart from "../../components/SkillsChart/SkillsChart";
 ChartJS.register(
   BarElement,
   CategoryScale,
@@ -131,18 +132,8 @@ function Dashboard() {
             <h2 className="dashboard__subtitle">
               Hello {user?.name || "Guest"} !
             </h2>
-            {/* First Row: Skills and Achievements */}
             <div className="dashboard__row">
-              <Card className="dashboard__sub-card">
-                <Card.Body>
-                  <Card.Title className="dashboard__sub-card-title">
-                    Skills Overview
-                  </Card.Title>
-                  <div className="dashboard__bar-container">
-                    <Bar data={skillsData} options={{ indexAxis: "y" }} />
-                  </div>
-                </Card.Body>
-              </Card>
+              <SkillsChart skills={skills}/>
               <Card className="dashboard__sub-card">
                 <Card.Body>
                   <Card.Title className="dashboard__sub-card-title">
