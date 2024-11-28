@@ -1,7 +1,8 @@
 import "./AuthCardLayout.scss";
 import logo from "../../assets/images/PW_Logo.png";
 import { useNavigate } from "react-router-dom";
-import arrowBack from "../../assets/icons/arrow_back-24px.svg"
+import arrowBack from "../../assets/icons/arrow_back-24px.svg";
+import { Link } from "react-router-dom";
 
 const AuthCardLayout = ({ children, headerText }) => {
     const navigate = useNavigate();
@@ -17,7 +18,9 @@ const AuthCardLayout = ({ children, headerText }) => {
         >
           <img src={arrowBack} alt="back-arrow"/>
         </button>
+        <Link to="/">
         <img className="auth-layout__logo" src={logo} alt="PathWise Logo" />
+        </Link>
         <h2 className="auth-layout__header">{headerText}</h2>
         {children}
         <div className="sub-footer">
