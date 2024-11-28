@@ -16,6 +16,7 @@ import {
   Legend,
 } from "chart.js";
 import SkillsChart from "../../components/SkillsChart/SkillsChart";
+import AchievementsChart from "../../components/AchievementsChart/AchievementsChart";
 ChartJS.register(
   BarElement,
   CategoryScale,
@@ -134,18 +135,8 @@ function Dashboard() {
             </h2>
             <div className="dashboard__row">
               <SkillsChart skills={skills}/>
-              <Card className="dashboard__sub-card">
-                <Card.Body>
-                  <Card.Title className="dashboard__sub-card-title">
-                    Achievements Overview
-                  </Card.Title>
-                  <div className="dashboard__chart-container">
-                    <Doughnut data={achievementsData} />
-                  </div>
-                </Card.Body>
-              </Card>
+              <AchievementsChart achievements={achievements}/>
             </div>
-
             {/* Second Row: Goals and Tasks */}
             <div className="dashboard__row">
               <Card className="dashboard__sub-card">
