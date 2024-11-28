@@ -119,8 +119,8 @@ function SkillsTrackerPage() {
         <Row>
           {skills.map((skill) => (
             <Col key={skill.id} xs={12} md={6} lg={4} className="mb-4">
-              <Card>
-                <Card.Body>
+              <Card className="skills__card">
+                <Card.Body >
                   <Card.Title>{skill.name}</Card.Title>
                   <Card.Text>Proficiency: {skill.proficiency}</Card.Text>
                   <div className="skills__buttons">
