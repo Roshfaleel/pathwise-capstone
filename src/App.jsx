@@ -8,6 +8,7 @@ import SkillsTrackerPage from "./pages/SkillsTrackerPage/SkillsTrackerPage";
 import AchievementsPage from "./pages/AchievementsPage/AchievementsPage";
 import MyaccountPage from "./pages/MyaccountPage/MyaccountPage";
 import LayoutWithSidebar from "./components/LayoutWithSidebar/LayoutWithSidebar";
+import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
             <Route path="/achievements" element={<AchievementsPage />} />
             <Route path="/myaccount" element={<MyaccountPage />} />
           </Route>
+          <Route path="*" element={<NotFoundPage/>}/>
         </Routes>
       </BrowserRouter>
     </>
