@@ -1,3 +1,4 @@
+@use "../../styles/partials/variables.scss" as *;
 
 .vertical-timeline {
     width: 50%;
@@ -18,13 +19,16 @@
 
   .timeline{
     &__header{
+      color: $secondary-color-2;
+    }
+
+    &__subheader{
         font-size: 14px;
         font-weight: 600;
+        
     }
   }
-  .vertical-timeline-element-content.bounce-in{
-    background-color: rgb(185, 216, 243);
-  }
+ 
   .vertical-timeline-element-content p{
     font-size: 12px;
   }
