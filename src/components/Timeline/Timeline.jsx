@@ -10,11 +10,10 @@ import "./Timeline.scss"
 function Timeline({ achievements, skills }) {
   return (
     <div>
-      <h2>Activity Timeline</h2>
+      <h2 className="timeline__header">Activity Timeline</h2>
       <VerticalTimeline>
         {achievements.map((achievement) => {
           const formattedDate = new Date(achievement.date).toLocaleDateString(); // Format the date
-
           return (
             <VerticalTimelineElement
               key={achievement.achievement_id}
@@ -22,7 +21,7 @@ function Timeline({ achievements, skills }) {
               icon={<i className="fa fa-trophy" />}
               contentStyle={{ background: "#f9f9f9", color: "#000" }}
             >
-              <h3 className="timeline__header">{achievement.achievement_name}</h3>
+              <h3 className="timeline__subheader">{achievement.achievement_name}</h3>
               <p className="timeline__content">{achievement.description}</p>
             </VerticalTimelineElement>
           );
@@ -33,7 +32,7 @@ function Timeline({ achievements, skills }) {
             date="Skill Acquired"
             icon={<i className="fa fa-star" />}
           >
-            <h3 className="timeline__header">{skill.skill_name}</h3>
+            <h3 className="timeline__subheader">{skill.skill_name}</h3>
             <p>Proficiency: {skill.proficiency_level}</p>
           </VerticalTimelineElement>
         ))}
