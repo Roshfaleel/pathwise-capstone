@@ -37,6 +37,7 @@ Conventional resumes just highlight a person's employment history and don't high
 - Home Page --> SignUp/Lets get Started --> Login --> Dashboard
 
 ## Features
+- Desktop display (1280px)
 - User can view their Skills, Achievements, Tasks and Goals summary on the Dashboard.
 - User can Add/Edit skills on the Skills page.
 - User can Add/Edit achievements on Achievements page.
