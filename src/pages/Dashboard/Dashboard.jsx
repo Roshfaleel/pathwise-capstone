@@ -1,5 +1,5 @@
 import "./Dashboard.scss";
-import { Card, Container} from "react-bootstrap";
+import { Button, Card, Container } from "react-bootstrap";
 import TaskManagement from "../../components/TaskManagement/TaskManagement";
 import GoalTracking from "../../components/GoalTracking/GoalTracking";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -16,6 +16,7 @@ import {
 } from "chart.js";
 import SkillsChart from "../../components/SkillsChart/SkillsChart";
 import AchievementsChart from "../../components/AchievementsChart/AchievementsChart";
+import { Link } from "react-router-dom";
 ChartJS.register(
   BarElement,
   CategoryScale,
@@ -117,8 +118,8 @@ function Dashboard() {
     datasets: [
       {
         label: "Achievements",
-        data: achievements.map(() => 1), 
-        backgroundColor: ["#11063d", "#006989", "#a8e0f7","#0064e0"], 
+        data: achievements.map(() => 1),
+        backgroundColor: ["#11063d", "#006989", "#a8e0f7", "#0064e0"],
       },
     ],
   };
@@ -133,8 +134,26 @@ function Dashboard() {
               Hello {user?.name || "Guest"} !
             </h2>
             <div className="dashboard__row">
-              <SkillsChart skills={skills}/>
-              <AchievementsChart achievements={achievements}/>
+              {skills.length > 0 ? (
+                <SkillsChart skills={skills} />
+              ) : (
+                <p className="dashboard__text">
+                  No skills added yet.{" "}
+                  <Link to="/skills">
+                  <Button className="dashboard__add-button">Add your first skill!</Button>
+                  </Link>
+                </p>
+              )}
+              {achievements.length > 0 ? (
+                <AchievementsChart achievements={achievements} />
+              ) : (
+                <p className="dashboard__text">
+                  No achievements added yet.{" "}
+                  <Link to="/achievements">
+                  <Button className="dashboard__add-button"> Celebrate your first achievement!</Button>
+                  </Link>
+                </p>
+              )}
             </div>
             <div className="dashboard__row">
               <Card className="dashboard__sub-card">
