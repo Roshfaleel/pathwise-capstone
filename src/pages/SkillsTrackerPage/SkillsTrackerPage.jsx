@@ -11,7 +11,7 @@ import {
   Form,
   Modal,
   Row,
-  Alert
+  Alert,
 } from "react-bootstrap";
 
 function SkillsTrackerPage() {
@@ -113,30 +113,34 @@ function SkillsTrackerPage() {
       <h1 className="skills__header">Your Skills</h1>
       {error && <Alert variant="danger">{error}</Alert>}
       <Container className="skills__container">
-        <Button className="skills__button mb-4" variant="primary" onClick={handleAdd}>
+        <Button
+          className="skills__button mb-4"
+          variant="primary"
+          onClick={handleAdd}
+        >
           Add Skill
         </Button>
         <Row>
           {skills.map((skill) => (
             <Col key={skill.id} xs={12} md={6} lg={4} className="mb-4">
               <Card className="skills__card">
-                <Card.Body >
+                <Card.Body>
                   <Card.Title>{skill.name}</Card.Title>
                   <Card.Text>Proficiency: {skill.proficiency}</Card.Text>
                   <div className="skills__buttons">
-                      <img
-                        className="skills__icon"
-                        src={editIcon}
-                        alt="Edit icon"
-                        onClick={() => handleEdit(skill)}
-                      />
-                      <img
-                        className="skills__icon"
-                        src={deleteIcon}
-                        alt="Delete icon"
-                        onClick={() => handleDelete(skill.id)}
-                      />
-                      </div>
+                    <img
+                      className="skills__icon"
+                      src={editIcon}
+                      alt="Edit icon"
+                      onClick={() => handleEdit(skill)}
+                    />
+                    <img
+                      className="skills__icon"
+                      src={deleteIcon}
+                      alt="Delete icon"
+                      onClick={() => handleDelete(skill.id)}
+                    />
+                  </div>
                 </Card.Body>
               </Card>
             </Col>
