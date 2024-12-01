@@ -24,6 +24,7 @@ function EditAchievementForm({ achievement, onSave, onCancel }) {
               type="text"
               name="name"
               defaultValue={achievement.name}
+              autoComplete="name"
               required
             />
           </Form.Group>

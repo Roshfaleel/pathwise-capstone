@@ -161,6 +161,7 @@ function SkillsTrackerPage() {
                   value={form.name}
                   onChange={handleInputChange}
                   placeholder="Enter skill name"
+                  autoComplete="name"
                   required
                 />
               </Form.Group>
