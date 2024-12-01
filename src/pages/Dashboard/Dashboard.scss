@@ -1,9 +1,10 @@
 @use "../../styles/partials/variables.scss" as *;
+@use "../../styles/partials/mixins.scss" as *;
 
 .dashboard {
   position: relative;
-  margin-left: 250px;
-  width: calc(100% - 250px);
+  margin-left: 15.625rem;
+  width: calc(100% - 15.625rem);
   min-height: 100vh;
   background-image: url("../../assets/images/dshbrd-background.jpg");
   background-position: center;
@@ -19,7 +20,6 @@
     left: 0;
     width: 100%;
     height: 100%;
-    //  background-color: rgba(178, 184, 241, 0.418);
     z-index: 1;
     pointer-events: none;
   }
@@ -28,46 +28,46 @@
     z-index: 2;
     width: 100%;
     margin: 0 auto;
-    padding: 20px;
+    padding: 1.25rem;
   }
 
   &__main-card.card {
-    background-color: rgba(255, 255, 255, 0.491); // White transparent
+    background-color: rgba(255, 255, 255, 0.491);
     border: none;
-    padding: 20px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 1.25rem;
+    box-shadow: 0px 0.25rem 0.625rem rgba(0, 0, 0, 0.1);
     position: relative;
     text-align: center;
   }
 
   &__title {
-    font-size: 2.5rem;
-    padding: 20px;
+    @include subheader;
+    padding: 1.25rem;
     text-align: left;
   }
 
   &__subtitle {
-    font-size: 2rem;
-    margin-bottom: 20px;
+    @include title;
+    margin-bottom: 1.25rem;
     text-align: left;
-    padding: 20px;
+    padding: 1.25rem;
   }
 
   &__row {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    gap: 20px;
-    margin-top: 20px;
+    gap: 1.25rem;
+    margin-top: 1.25rem;
   }
 
   &__sub-card.card {
     flex: 1;
-    min-width: 300px;
+    min-width: 18.75rem;
     background-color: rgba(237, 238, 247, 0.72);
     border: none;
-    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
+    box-shadow: 0px 0.125rem 0.5rem rgba(0, 0, 0, 0.1);
+    padding: 1.25rem;
     text-align: left;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 
@@ -78,21 +78,21 @@
   }
 
   &__sub-card-title.card-title {
-    font-size: 2rem;
-    margin-bottom: 15px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid $primary-color-2;
+    @include title;
+    margin-bottom: 0.9375rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 0.0625rem solid $primary-color-2;
   }
 
   &__chart-container {
-    max-width: 400px;
+    max-width: 25rem;
     margin: 0 auto;
   }
 
   &__bar-container {
-    max-width: 600px;
+    max-width: 37.5rem;
     margin: 0 auto;
-    margin-top: 20px;
+    margin-top: 1.25rem;
   }
 
   &__text {
@@ -101,9 +101,9 @@
   }
 
   &__add-button {
-    margin-top: 10px;
+    margin-top: 0.625rem;
     cursor: pointer;
-    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 0.5rem 0.9375rem rgba(0, 0, 0, 0.5);
     transition: transform 0.3s ease, background-color 0.3s ease;
 
     &:hover {

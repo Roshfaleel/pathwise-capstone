@@ -1,35 +1,32 @@
 @use "../../styles/partials/variables.scss" as *;
 
 .vertical-timeline {
-    width: 50%;
-    margin: 0 auto;
-  }
-  
-  .vertical-timeline-element {
-    width: 90%; 
-    margin: 10px auto; 
-    padding: 10px;
-  }
-  
- 
-  .vertical-timeline-element .icon {
-    font-size: 25px; 
-    margin-top: 10px;
+  width: 50%;
+  margin: 0 auto;
+}
+
+.vertical-timeline-element {
+  width: 90%;
+  margin: 0.625rem auto;
+  padding: 0.625rem;
+}
+
+.vertical-timeline-element .icon {
+  font-size: 1.5625rem;
+  margin-top: 0.625rem;
+}
+
+.timeline {
+  &__header {
+    color: $secondary-color-2;
   }
 
-  .timeline{
-    &__header{
-      color: $secondary-color-2;
-    }
+  &__subheader {
+    font-size: 0.875rem;
+    font-weight: 600;
+  }
+}
 
-    &__subheader{
-        font-size: 14px;
-        font-weight: 600;
-        
-    }
-  }
- 
-  .vertical-timeline-element-content p{
-    font-size: 12px;
-  }
-  
+.vertical-timeline-element-content p {
+  font-size: 0.75rem;
+}

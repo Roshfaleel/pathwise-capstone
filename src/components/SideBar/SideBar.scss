@@ -1,43 +1,39 @@
 @use "../../styles/partials/variables.scss" as *;
 
-
 .sidebar {
-    width: 250px; 
-    position: fixed; 
-    left: 0;
-    top: 0;
-    bottom: 0;
-    z-index: 1030; 
-    border-right: 1px solid #ddd; 
+  width: 15.625rem;
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 1030;
+  border-right: 0.0625rem solid #ddd;
 
-    &__img{
-        width: 60px;
-        height: auto;
-        cursor: pointer;
-    }
-    
-    &__avatar{
-      width: 150px;
-      object-fit: cover;
-    }
-
-    &__link{
-      padding: 10px 15px;
-      color: #333;
-      text-decoration: none;
-      transition: background-color 0.3s, color 0.3s;
-    
-      &:hover {
-        background-color: $secondary-color-2; 
-      }
-
-      &--active {
-        background-color: $primary-color-1; 
-        color: white; 
-        border-radius: 4px; 
-      }
-    }
-
+  &__img {
+    width: 3.75rem;
+    height: auto;
+    cursor: pointer;
   }
 
-  
+  &__avatar {
+    width: 9.375rem;
+    object-fit: cover;
+  }
+
+  &__link {
+    padding: 0.625rem 0.9375rem;
+    color: $primary-color-1;
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s;
+
+    &:hover {
+      background-color: $secondary-color-2;
+    }
+
+    &--active {
+      background-color: $primary-color-1;
+      color: $primary-color-3;
+      border-radius: 0.25rem;
+    }
+  }
+}

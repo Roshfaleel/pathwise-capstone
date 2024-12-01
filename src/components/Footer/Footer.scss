@@ -1,22 +1,23 @@
 @use "../../styles/partials/variables.scss" as *;
+@use "../../styles/partials/mixins.scss" as *;
 
 .footer{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 10px;
-    margin-top: 40px;
-    
-   background-color: $secondary-color-2;
+    padding: .625rem;
+    margin-top: 2.5rem;
+    background-color: $secondary-color-2;
+
     &__img{
       align-self: center;
-      height: 40px;
-      width: 40px;
+      height: 2.5rem;
+      width: 2.5rem;
     }
   
     &__detail{
       align-self: center;
       margin: 0;
-      font-size: .75rem;
+      @include footer;
     }
   }

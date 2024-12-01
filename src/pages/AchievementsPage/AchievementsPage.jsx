@@ -1,7 +1,4 @@
 import { useState, useEffect } from "react";
-import { Card, Button, Form, Row, Col } from "react-bootstrap";
-import deleteIcon from "../../assets/icons/delete_outline-24px.svg";
-import editIcon from "../../assets/icons/edit-24px.svg";
 import axios from "axios";
 import "./AchievementsPage.scss";
 import AchievementsList from "../../components/AchievementsList/AchievementsList";
@@ -101,7 +98,6 @@ function AchievementsPage() {
       );
   
       if (response.status === 201) {
-        console.log("Achievement added successfully:", response.data);
         const addedAchievement = {
           ...newAchievement,
           id: response.data.achievement_id, 
@@ -146,9 +142,7 @@ function AchievementsPage() {
   return (
     <div className="achievements">
       <h1 className="achievements__header"> Your Achievements</h1>
-      {/* Display error message */}
       {error && <div className="alert alert-danger">{error}</div>}
-      {/* Display Achievements */}
       <AchievementsList
         achievements={achievements}
         onEdit={handleEdit}
@@ -161,7 +155,6 @@ function AchievementsPage() {
           onCancel={() => setIsEditing(false)}
         />
       )}
-      {/* Add Achievement Form */}
       <AchievementForm onAdd={handleAdd} />
     </div>
   );

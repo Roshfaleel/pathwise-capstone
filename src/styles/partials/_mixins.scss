@@ -1,3 +1,28 @@
 @mixin box-sizing {
     box-sizing: border-box;
   }
+
+@mixin header{
+  font-size: 3.5rem;
+  line-height: 4rem;
+  }
+
+@mixin subheader{
+  font-size: 3rem;
+  line-height: 3.5rem;
+}
+
+@mixin title{
+  font-size: 2rem;
+  line-height: 2.5rem;
+}
+
+@mixin content {
+  font-size: .75rem;
+  line-height: 1rem;
+}
+
+@mixin footer{
+  font-size: .625rem;
+  line-height: .75rem;
+}

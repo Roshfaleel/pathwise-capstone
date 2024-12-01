@@ -1,24 +1,22 @@
 @use "../../styles/partials/variables.scss" as *;
 
 .login-page {
-  &__link{
-    padding: 20px 0;
-    font-size: 14px;
+  &__link {
+    padding: 1.25rem 0;
+    font-size: 0.875rem;
 
     a {
-        color: $primary-color-2; 
-        text-decoration: none; 
-    
-        &:hover {
-          color: $primary-color-1; 
-          text-decoration: underline; 
-        }
-    
-        &:active {
-          color: #1abc9c;
-        }
+      color: $primary-color-2;
+      text-decoration: none;
+
+      &:hover {
+        color: $primary-color-1;
+        text-decoration: underline;
       }
+
+      &:active {
+        color: #1abc9c;
+      }
+    }
   }
 }
-
-
