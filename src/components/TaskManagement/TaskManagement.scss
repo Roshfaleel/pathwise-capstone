@@ -3,7 +3,7 @@
 
 .task-management{
     &__list{
-        margin-top: 20px;
+        margin-top: 1.25rem;
     }
 
     &__card{
@@ -11,10 +11,10 @@
     }
 
     &__title{
-        font-size: 24px;
+        font-size: 1.5rem;
     }
 }
 .list-group-item-success {
-    background-color: #006989 !important; 
-    color: #fff !important; 
+    background-color: $primary-color-2 !important; 
+    color: $primary-color-3 !important; 
   }
