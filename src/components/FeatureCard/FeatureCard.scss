@@ -1,63 +1,64 @@
 @use "../../styles/partials/variables.scss" as *;
+@use "../../styles/partials/mixins.scss" as *;
 
 .features {
-    &__container {
-      margin: 42px;
-    }
-  
-    &__title {
-      font-size: 32px;
-      margin-bottom: 20px;
-    }
-  
-    &__cards{
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-    }
-    &__card {
-      background-color: $primary-color-3;
-      margin-top: 20px;
-     margin-bottom: 20px;
-      display: flex;
-      flex-direction: column;
-      align-content: center;
-      padding: 10px;
-      border-radius: 12px;
-      width: 30%;
-      box-shadow: 0 0.25rem 0.5rem 0.125rem rgba(0, 0, 0, 0.2); 
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-  
-      &:hover {
-        transform: translateY(-0.3125rem); 
-        box-shadow: 0 0.3125rem 0.625rem 0.125rem rgba(0, 100, 224, 0.3); 
-      }
-    }
-  
-    &__img{
-      width: 100%;
-      height: 60%;
-      align-self: center;
-      margin-bottom: 20px;
-    }
-  
-    &__card-content{
-      align-self: center;
-      padding-bottom: 20px;
-    }
-  
-    &__card-title{
-      font-size: 28px;
-      margin-bottom: 20px;
-      text-align: center;
-      padding-top: 20px;
-      border-top: 1px solid $secondary-color-2;
-    }
-  
-    &__card-content{
-      font-size: 18px;
-      line-height: 24px;
-      text-align: center;
+  &__container {
+    margin: 2.625rem;
+  }
+
+  &__title {
+    @include title;
+    margin-bottom: 1.25rem;
+  }
+
+  &__cards {
+    display: flex;
+    justify-content: center;
+    gap: 1.25rem;
+  }
+
+  &__card {
+    background-color: $primary-color-3;
+    margin-top: 1.25rem;
+    margin-bottom: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    padding: 0.625rem;
+    border-radius: 0.75rem;
+    width: 30%;
+    box-shadow: 0 0.25rem 0.5rem 0.125rem rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    &:hover {
+      transform: translateY(-0.3125rem);
+      box-shadow: 0 0.3125rem 0.625rem 0.125rem rgba(0, 100, 224, 0.3);
     }
   }
-  
+
+  &__img {
+    width: 100%;
+    height: 60%;
+    align-self: center;
+    margin-bottom: 1.25rem;
+  }
+
+  &__card-content {
+    align-self: center;
+    padding-bottom: 1.25rem;
+  }
+
+  &__card-title {
+    font-size: 1.75rem;
+    margin-bottom: 1.25rem;
+    text-align: center;
+    padding-top: 1.25rem;
+    border-top: 0.0625rem solid $secondary-color-2;
+  }
+
+  &__card-content {
+    font-size: 1.125rem;
+    line-height: 1.5rem;
+    text-align: center;
+  }
+}
