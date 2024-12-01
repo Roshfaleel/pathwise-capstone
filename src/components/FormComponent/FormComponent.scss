@@ -1,40 +1,39 @@
 @use "../../styles/partials/variables.scss" as *;
 
-
 .form-component {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    text-align: left;
-    gap: 1rem;
-    width: 100%;
-    padding-top: 20px;
-  
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  text-align: left;
+  gap: 1rem;
+  width: 100%;
+  padding-top: 1.25rem;
+
   &__label {
     display: flex;
     flex-direction: column;
     width: 100%;
-    margin-bottom: 15px;
+    margin-bottom: 0.9375rem;
   }
 
   &__input {
-    margin-top: 10px;
-    padding: 10px;
-    border-radius: 20px;
-    border: 1px solid $primary-color-2;
+    margin-top: 0.625rem;
+    padding: 0.625rem;
+    border-radius: 1.25rem;
+    border: 0.0625rem solid $primary-color-2;
   }
 
   &__button {
     padding: 0.8rem;
     background: $primary-color-1;
-    color: white;
+    color: $primary-color-3;
     border: none;
-    border-radius: 20px;
+    border-radius: 1.25rem;
     cursor: pointer;
     transition: background-color 0.3s ease;
 
     &:hover {
-        background-color: $primary-color-2;
+      background-color: $primary-color-2;
     }
   }
 }
