@@ -17,6 +17,11 @@
   line-height: 2.5rem;
 }
 
+@mixin content {
+  font-size: .75rem;
+  line-height: 1rem;
+}
+
 @mixin footer{
   font-size: .625rem;
   line-height: .75rem;

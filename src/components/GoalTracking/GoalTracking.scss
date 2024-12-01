@@ -1,9 +1,11 @@
+@use "../../styles/partials/mixins.scss" as *;
+
 .goal-tracking{
     &__card{
-        margin-top: 40px;
+        margin-top: 2.5rem;
     }
 
     &__content{
-        font-size: 12px;
+        @include content;
     }
 }
