@@ -1,18 +1,19 @@
 @use "../../styles/partials/variables.scss" as *;
+@use "../../styles/partials/mixins.scss" as *;
 
 .achievements {
-  margin-left: 250px;
-  width: calc(100% - 250px);
+  margin-left: 15.625rem;
+  width: calc(100% - 15.625rem);
   min-height: 100vh;
   background-image: url("../../assets/images/dshbrd-background.jpg");
   background-position: center;
   background-size: cover;
-  padding: 20px;
+  padding: 1.25rem;
 
   &__header {
-    margin-top: 40px;
-    margin-bottom: 40px;
-    font-size: 2.5rem;
+    margin-top: 2.5rem;
+    margin-bottom: 2.5rem;
+    @include title;
     font-weight: 600;
     color: $secondary-color-2;
   }
@@ -20,14 +21,13 @@
   &__card.card {
     background-color: rgba(191, 216, 244, 0.423);
     border: none;
-    border-radius: 20px;
-   
+    border-radius: 1.25rem;
   }
 
   &__card-body {
     background-color: rgba(255, 255, 255, 0.84);
-    border-radius: 20px;
-    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 1.25rem;
+    box-shadow: 0px 0.125rem 0.5rem rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 
     &:hover {
@@ -37,39 +37,39 @@
   }
 
   &__title {
-    padding-bottom: 20px;
-    border-bottom: 1px solid $primary-color-1;
-    margin-bottom: 20px;
+    padding-bottom: 1.25rem;
+    border-bottom: 0.0625rem solid $primary-color-1;
+    margin-bottom: 1.25rem;
   }
 
-  &__buttons{
+  &__buttons {
     display: flex;
     justify-content: space-between;
   }
 
-  &__icon{
+  &__icon {
     cursor: pointer;
   }
 
-  &__edit.card{
-    border-radius: 20px;
-    padding: 20px;
+  &__edit.card {
+    border-radius: 1.25rem;
+    padding: 1.25rem;
     background-color: rgb(225, 225, 243);
   }
 
-  &__edit-title.card-title{
+  &__edit-title.card-title {
     font-size: 1.5rem;
     font-weight: 600;
-    padding-bottom: 20px;
+    padding-bottom: 1.25rem;
   }
 
-  &__form{
-    padding-bottom: 20px;
+  &__form {
+    padding-bottom: 1.25rem;
   }
 
-  &__add.card{
-    border-radius: 20px;
-    padding: 20px;
+  &__add.card {
+    border-radius: 1.25rem;
+    padding: 1.25rem;
     background-color: rgb(219, 227, 250);
   }
 }
