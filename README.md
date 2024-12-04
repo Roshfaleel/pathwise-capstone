@@ -41,8 +41,7 @@ Conventional resumes just highlight a person's employment history and don't high
 **DataBase**
 - MySQL
 
-**Authentication**
-- Passport.js
+
 
 ### APIs
 
