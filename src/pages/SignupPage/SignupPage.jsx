@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./SignUpPage.scss";
+import "./SignupPage.scss";
 import { Link, useNavigate } from "react-router-dom";
 import FormComponent from "../../components/FormComponent/FormComponent";
 import AuthCardLayout from "../../components/AuthCardLayout/AuthCardLayout";
