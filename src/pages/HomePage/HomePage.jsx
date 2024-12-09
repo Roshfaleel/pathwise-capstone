@@ -1,7 +1,7 @@
 import React from "react";
 import "./HomePage.scss";
 import { Link } from "react-router-dom";
-import NavBar from "../../components/NavBar/Navbar";
+import NavBar from "../../components/NavBar/NavBar";
 import FeaturesSection from "../../components/FeaturesSection/FeaturesSection";
 import Footer from "../../components/Footer/Footer";
 
